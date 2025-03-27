@@ -7,7 +7,7 @@
 * Related Document:See README.md
 *
 ********************************************************************************
-* Copyright 2023-2024, Cypress Semiconductor Corporation (an Infineon company) or
+* Copyright 2023-2025, Cypress Semiconductor Corporation (an Infineon company) or
 * an affiliate of Cypress Semiconductor Corporation.  All rights reserved.
 *
 * This software, including source code, documentation and related
@@ -43,9 +43,9 @@
 * Includes
 ********************************************************************************/
 
+#include <stdio.h>
 #include "cy_pdl.h"
 #include "cybsp.h"
-#include "cy_retarget_io.h"
 
 #include "SelfTest_SPI_SCB.h"
 #include "cycfg_pins.h"
@@ -63,6 +63,7 @@
 *******************************************************************************/
 
 static cy_stc_scb_spi_context_t CYBSP_DUT_SPI_context;
+char uart_print_buff[100]={0};
 
 /*******************************************************************************
 * Function Prototypes
@@ -101,6 +102,8 @@ int main(void)
 {
     cy_rslt_t result;
     cy_en_smartio_status_t smart_res;
+    cy_stc_scb_uart_context_t CYBSP_UART_context;
+
     uint8_t ret;
 
     uint16_t count = 0u;
@@ -115,16 +118,13 @@ int main(void)
     /* Enable global interrupts */
     __enable_irq();
     
-    /* Initialize retarget-io to use the debug UART port */
-    result = cy_retarget_io_init(CYBSP_DEBUG_UART_TX, CYBSP_DEBUG_UART_RX, CY_RETARGET_IO_BAUDRATE);
-    if (result != CY_RSLT_SUCCESS)
-    {
-        CY_ASSERT(0);
-    }
+    /* Configure and enable the UART peripheral */
+    Cy_SCB_UART_Init(CYBSP_UART_HW, &CYBSP_UART_config, &CYBSP_UART_context);
+    Cy_SCB_UART_Enable(CYBSP_UART_HW);
 
     /* \x1b[2J\x1b[;H - ANSI ESC sequence for clear screen */
-    printf("\x1b[2J\x1b[;H");
-    printf("\r\nClass-B Safety Test: SPI Loopback\r\n");
+    Cy_SCB_UART_PutString(CYBSP_UART_HW, "\x1b[2J\x1b[;H");
+    Cy_SCB_UART_PutString(CYBSP_UART_HW, "\r\nClass-B Safety Test: SPI Loopback\r\n");
 
     /* Configure the Smart I/O block 2 */
     if(CY_SMARTIO_SUCCESS != Cy_SmartIO_Init(CYBSP_SMARTIO_SPI_LOOPBACK_HW, &CYBSP_SMARTIO_SPI_LOOPBACK_config))
@@ -198,12 +198,13 @@ int main(void)
         if ((PASS_COMPLETE_STATUS != ret) && (PASS_STILL_TESTING_STATUS != ret))
         {
             /* Process error */
-            printf("\r\nSPI SCB test: error \r\n");
+            Cy_SCB_UART_PutString(CYBSP_UART_HW, "\r\nSPI SCB test: error \r\n");
             while (1);
         }
 
         /* Print test counter */
-        printf("\rSPI SCB loopback testing... count=%d", count);
+        sprintf(uart_print_buff, "\rSPI SCB loopback testing... count=%d", count);
+        Cy_SCB_UART_PutString(CYBSP_UART_HW, uart_print_buff);
 
         Cy_SysLib_Delay(PRINT_DELAY_MS);
         
