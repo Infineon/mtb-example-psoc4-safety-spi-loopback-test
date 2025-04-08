@@ -4,15 +4,15 @@ This code example demonstrates the use of the Class B Safety Test Library (STL) 
 
 [View this README on GitHub.](https://github.com/Infineon/mtb-example-psoc4-safety-spi-loopback-test)
 
-[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzgwMzQiLCJTcGVjIE51bWJlciI6IjAwMi0zODAzNCIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IDQgQ2xhc3MgQiBzYWZldHkgdGVzdDogU1BJIGxvb3BiYWNrIiwicmlkIjoic2RhayIsIkRvYyB2ZXJzaW9uIjoiMS4xLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
+[Provide feedback on this code example.](https://cypress.co1.qualtrics.com/jfe/form/SV_1NTns53sK2yiljn?Q_EED=eyJVbmlxdWUgRG9jIElkIjoiQ0UyMzgwMzQiLCJTcGVjIE51bWJlciI6IjAwMi0zODAzNCIsIkRvYyBUaXRsZSI6IlBTT0MmdHJhZGU7IDQgQ2xhc3MgQiBzYWZldHkgdGVzdDogU1BJIGxvb3BiYWNrIiwicmlkIjoic2RhayIsIkRvYyB2ZXJzaW9uIjoiMS4yLjAiLCJEb2MgTGFuZ3VhZ2UiOiJFbmdsaXNoIiwiRG9jIERpdmlzaW9uIjoiTUNEIiwiRG9jIEJVIjoiSUNXIiwiRG9jIEZhbWlseSI6IlBTT0MifQ==)
 
 
 ## Requirements
 
-- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.4 or later (tested with v3.4)
-- Board support package (BSP) minimum required version: 3.0.0
+- [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) v3.5 or later (tested with v3.5)
+- Board support package (BSP) minimum required version: 3.2.0
 - Programming language: C
-- Associated parts: [PSOC&trade; 4500S](https://www.infineon.com/cms/en/product/microcontroller/32-bit-psoc-arm-cortex-microcontroller/psoc-4-32-bit-arm-cortex-m0-mcu/), [PSOC&trade; 4100S Max](https://www.infineon.com/cms/en/product/microcontroller/32-bit-psoc-arm-cortex-microcontroller/psoc-4-32-bit-arm-cortex-m0-mcu/)
+- Associated parts: [PSOC&trade; 4100S Plus, PSOC&trade; 4500S, PSOC&trade; 4100S Max, PSOC&trade; 4100T Plus](https://www.infineon.com/cms/en/product/microcontroller/32-bit-psoc-arm-cortex-microcontroller/psoc-4-32-bit-arm-cortex-m0-mcu/)
 
 
 ## Supported toolchains (make variable 'TOOLCHAIN')
@@ -27,6 +27,8 @@ This code example demonstrates the use of the Class B Safety Test Library (STL) 
 - [PSOC&trade; 4100S Max Pioneer Kit](https://www.infineon.com/CY8CKIT-041S-MAX) (`CY8CKIT-041S-MAX`) – Default value of `TARGET`
 - [PSOC&trade; 4500S Pioneer Kit](https://www.infineon.com/CY8CKIT-045S) (`CY8CKIT-045S`)
 - [PSOC&trade; 4100S Plus Prototyping Kit](https://www.infineon.com/CY8CKIT-149) (`CY8CKIT-149`)
+- [PSOC&trade; 4100T Plus CAPSENSE&trade; Prototyping kit](https://www.infineon.com/CY8CPROTO-041TP) (`CY8CPROTO-041TP`)
+
 
 
 ## Hardware setup
@@ -197,7 +199,9 @@ For more details, see the [ModusToolbox&trade; tools package user guide](https:/
 
    ![](images/terminal-spi.png)
 
-5. The serial terminal should display the result of the SPI loopback test
+6. The serial terminal should display the result of the SPI loopback test. The LED blinks, indicating the safety test is successful. If the LED is set rather than blinking, the selt test has failed
+
+   > **Note:** To display the result of the SPI loopback test on the serial terminal for CY8CPROTO-041TP device, connect the pins P2.4 and P2.5 to your PC through the MiniProg4 USB connector using the provided USB cable.
 
 
 ## Debugging
@@ -250,7 +254,7 @@ Application notes  | [AN79953](https://www.infineon.com/AN79953) – Getting sta
 Code examples  | [Using ModusToolbox&trade;](https://github.com/Infineon/Code-Examples-for-ModusToolbox-Software) on GitHub
 Device documentation | [PSOC&trade; 4 datasheets](https://www.infineon.com/cms/en/search.html#!view=downloads&term=psoc4&doc_group=Data%20Sheet) <br>[PSOC&trade; 4 technical reference manuals](https://www.infineon.com/cms/en/search.html#!view=downloads&term=psoc4&doc_group=Additional%20Technical%20Information)
 Development kits | Select your kits from the [Evaluation board finder](https://www.infineon.com/cms/en/design-support/finder-selection-tools/product-finder/evaluation-board)
-Libraries on GitHub | [mtb-pdl-cat2](https://github.com/Infineon/mtb-pdl-cat2) – PSOC&trade; 4 Peripheral Driver Library (PDL)<br> [mtb-hal-cat2](https://github.com/Infineon/mtb-hal-cat2) - Hardware Abstraction Layer (HAL) library
+Libraries on GitHub | [mtb-pdl-cat2](https://github.com/Infineon/mtb-pdl-cat2) – PSOC&trade; 4 Peripheral Driver Library (PDL)<br> 
 Middleware on GitHub | [capsense](https://github.com/Infineon/capsense) – CAPSENSE&trade; library and documents <br> [mtb-stl](https://github.com/Infineon/mtb-stl) - Safety Test Library (STL)
 Tools  | [ModusToolbox&trade;](https://www.infineon.com/modustoolbox) – ModusToolbox&trade; software is a collection of easy-to-use libraries and tools enabling rapid development with Infineon MCUs for applications ranging from wireless and cloud-connected systems, edge AI/ML, embedded sense and control, to wired USB connectivity using PSOC&trade; Industrial/IoT MCUs, AIROC&trade; Wi-Fi and Bluetooth&reg; connectivity devices, XMC&trade; Industrial MCUs, and EZ-USB&trade;/EZ-PD&trade; wired connectivity controllers. ModusToolbox&trade; incorporates a comprehensive set of BSPs, HAL, libraries, configuration tools, and provides support for industry-standard IDEs to fast-track your embedded application development
 
@@ -271,6 +275,7 @@ Document title: *CE238034* – *PSOC&trade; 4 Class B safety test: SPI loopback*
  0.1.0   | Alpha release version
  1.0.0   | Updated to support mtb-stl v3.x
  1.1.0   | Added support for CY8CKIT-149 and Arm&reg; Compiler
+ 1.2.0   | Added support for CY8CPROTO-041TP
 <br>
 
 All referenced product or service names and trademarks are the property of their respective owners.

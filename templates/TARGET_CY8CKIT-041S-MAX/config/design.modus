@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Configuration app="BACKEND" formatVersion="14" lastSavedWith="Configurator Backend" lastSavedWithVersion="3.40.0" toolsPackage="ModusToolbox 3.4.0" xmlns="http://cypress.com/xsd/cydesignfile_v5">
+<Configuration app="BACKEND" formatVersion="14" lastSavedWith="Configurator Backend" lastSavedWithVersion="3.50.0" toolsPackage="ModusToolbox 3.5.0" xmlns="http://cypress.com/xsd/cydesignfile_v5">
     <Devices>
         <Device mpn="CY8C4149AZI-S598">
             <BlockConfig>
@@ -115,13 +115,6 @@
                         <Alias value="CYBSP_J4_8"/>
                     </Aliases>
                 </Block>
-                <Block location="ioss[0].port[6].pin[4]">
-                    <Aliases>
-                        <Alias value="CYBSP_LED2"/>
-                        <Alias value="CYBSP_LED_BTN0"/>
-                        <Alias value="CYBSP_USER_LED2"/>
-                    </Aliases>
-                </Block>
                 <Block location="ioss[0].port[6].pin[5]">
                     <Aliases>
                         <Alias value="CYBSP_PROX"/>
@@ -131,13 +124,6 @@
                     <Aliases>
                         <Alias value="CYBSP_A13"/>
                         <Alias value="CYBSP_J2_12"/>
-                    </Aliases>
-                </Block>
-                <Block location="ioss[0].port[7].pin[3]">
-                    <Aliases>
-                        <Alias value="CYBSP_LED1"/>
-                        <Alias value="CYBSP_USER_LED"/>
-                        <Alias value="CYBSP_USER_LED1"/>
                     </Aliases>
                 </Block>
                 <Block location="ioss[0].port[7].pin[5]">
@@ -951,6 +937,24 @@
                     </Parameters>
                 </Personality>
                 <Personality template="m0s8pin" version="2.0">
+                    <Block location="ioss[0].port[6].pin[4]" locked="true">
+                        <Aliases>
+                            <Alias value="CYBSP_LED2"/>
+                            <Alias value="CYBSP_LED_BTN0"/>
+                            <Alias value="CYBSP_USER_LED2"/>
+                        </Aliases>
+                    </Block>
+                    <Parameters>
+                        <Param id="DriveModes" value="CY_GPIO_DM_OD_DRIVESLOW"/>
+                        <Param id="inFlash" value="true"/>
+                        <Param id="initialState" value="1"/>
+                        <Param id="isrTrigger" value="CY_GPIO_INTR_DISABLE"/>
+                        <Param id="portLevelConfig" value="false"/>
+                        <Param id="slewRate" value="CY_GPIO_SLEW_FAST"/>
+                        <Param id="vtrip" value="CY_GPIO_VTRIP_CMOS"/>
+                    </Parameters>
+                </Personality>
+                <Personality template="m0s8pin" version="2.0">
                     <Block location="ioss[0].port[7].pin[0]" locked="true">
                         <Aliases>
                             <Alias value="CYBSP_MSC1_CMOD1"/>
@@ -974,6 +978,24 @@
                     </Block>
                     <Parameters>
                         <Param id="DriveModes" value="CY_GPIO_DM_ANALOG"/>
+                        <Param id="inFlash" value="true"/>
+                        <Param id="initialState" value="1"/>
+                        <Param id="isrTrigger" value="CY_GPIO_INTR_DISABLE"/>
+                        <Param id="portLevelConfig" value="false"/>
+                        <Param id="slewRate" value="CY_GPIO_SLEW_FAST"/>
+                        <Param id="vtrip" value="CY_GPIO_VTRIP_CMOS"/>
+                    </Parameters>
+                </Personality>
+                <Personality template="m0s8pin" version="2.0">
+                    <Block location="ioss[0].port[7].pin[3]" locked="true">
+                        <Aliases>
+                            <Alias value="CYBSP_LED1"/>
+                            <Alias value="CYBSP_USER_LED"/>
+                            <Alias value="CYBSP_USER_LED1"/>
+                        </Aliases>
+                    </Block>
+                    <Parameters>
+                        <Param id="DriveModes" value="CY_GPIO_DM_STRONG_IN_OFF"/>
                         <Param id="inFlash" value="true"/>
                         <Param id="initialState" value="1"/>
                         <Param id="isrTrigger" value="CY_GPIO_INTR_DISABLE"/>
